@@ -1,6 +1,6 @@
 import java.util.*;
 public class BinaryTreedemo {
-    // declaration of node
+    
     static class Node{ 
         int data;
         Node left;
@@ -12,13 +12,10 @@ public class BinaryTreedemo {
 
         }
     }
-        static class BinaryTree{
-            // helps in traversing 
+        static class BinaryTree{ 
             static int idx= -1;
-            // it will all the nodes info and return our root node
             public  Node BuildTree(int nodes[]){
                idx++;
-               //if initially root is null value then their is no tree
                if(nodes[idx] == -1){
                    return null;
                }
@@ -29,9 +26,7 @@ public class BinaryTreedemo {
 
             }
         }
-        // preorder, inorder and postorder are examples of DFS(Depth first search)
-        // code for preorder
-        // preorder first it will print root next left next right
+ 
         public static void preorder(Node root){
             if(root == null){
                 return;
@@ -40,8 +35,7 @@ public class BinaryTreedemo {
                preorder(root.left);
                preorder(root.right);
         }
-         // code for inorder
-        // inorder first it will print left next root next right
+   
         public static void Inorder(Node root){
             if(root == null){
                 return;
@@ -51,8 +45,7 @@ public class BinaryTreedemo {
                
                Inorder(root.right);
         }
-         // code for postorder
-        // postorder first it will print left  next right next root
+    
         public static void postorder(Node root){
             if(root == null){
                 return;
@@ -63,41 +56,33 @@ public class BinaryTreedemo {
                System.out.print(root.data +" ");
                
         }
-        // level ordering is an example of BFS
-        // we use queue to do this , we follow FIFO here
+  
         public static void Levelorder(Node root){
             if(root == null){
                 return;
             }
           Queue<Node> q= new LinkedList<>();
-        //firstly we are adding root and null(used to know where we need to use next line i.e another level)
           q.add(root);
           q.add(null);
-
-        //queue should not be empty
           while(!q.isEmpty()){
-              Node currnode = q.remove(); // here we are removing the elements one by one according to the levels and store them in a list
+              Node currnode = q.remove();
               
               if(currnode == null){
-                  //if currnode is null i.e it should be the leave then we need to go next level ,we need to print in another line
                   System.out.println();
-
                   if(q.isEmpty()){
-                      break;//if this is the last leave then we should stop here
+                      break;
                   }else{
-                      q.add(null);// if queue is empty then add null that means we have traversed all the elements by using FIFO and stored in list
+                      q.add(null);
 
                   }
-                }
-            
-                  // this else will print the data
+              }
                   else{
-                      System.out.print(currnode.data+" ");// it will print the data
+                      System.out.print(currnode.data+" ");
                       if(currnode.left != null){
-                         q.add(currnode.left);// if left node is not equals to null we need to print the data
+                         q.add(currnode.left);
                       }
                       if(currnode.right != null){
-                        q.add(currnode.right);// if left node is not equals to null we need to print the data
+                        q.add(currnode.right);
                      }
                   }
               }
@@ -136,7 +121,7 @@ public class BinaryTreedemo {
             return myheight;
         }
         public static int diameter(Node root){
-            // timecomplexity is O(n^2) becoz we are using diff function i.e height
+            // timecomplexity is O(n^2) 
             if(root == null){
                 return 0;
             }            
